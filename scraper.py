@@ -3,6 +3,7 @@ from os import remove
 import requests
 import re
 import random
+import pickle
 from bs4 import BeautifulSoup
 
 user_agents = [
@@ -16,7 +17,52 @@ headers = {
     'Accept-Encoding': 'gzip, deflate', 'Accept-Language': 'en-US,en;q=0.5', 'Connection': 'close'
 }
 
-def remove_tags(text):
+karlov_booster_box = ['https://www.m-g.com.au/product/mtg-murders-at-karlov-manor-play-booster-box/', 'https://vaultgames.com.au/products/murders-at-karlov-manor-play-booster-box?_pos=3&_sid=19ac284bf&_ss=r','https://theboardgamer.com.au/products/magic-the-gathering-murders-at-karlov-manor-play-booster-box-38428933',
+                      'https://gamesempire.com.au/products/magic-murders-at-karlov-manor-play-booster-box?_pos=9&_sid=1d0248fdd&_ss=r', 'https://shop.goodgames.com.au/products/magic-the-gathering-murders-at-karlov-manor-play-booster-box-preorder?variant=43011077734558', 'https://www.gameology.com.au/products/magic-murders-at-karlov-manor-play-booster-box',
+                      'https://www.deckedoutgaming.com/murders-at-karlov-manor-play-booster-box', 'https://www.plentyofgames.com.au/collections/mtg-sealed/products/murders-at-karlov-manor-play-booster-display']
+
+www_substring = "www."
+shop_substring = "shop."
+
+def _get_supplier(supplier_url):
+    this_supplier_string = supplier_url.split('.com')[0]
+    this_supplier_string = this_supplier_string.split('https://')[1]
+    if www_substring in this_supplier_string:
+        this_supplier_string = this_supplier_string.split('www.')[1]
+    if shop_substring in this_supplier_string:
+        this_supplier_string = this_supplier_string.split('shop.')[1]
+    return this_supplier_string
+
+def _scrape_site(url, this_supplier):
+    this_request = requests.get(url, headers=headers)
+    soup = BeautifulSoup(this_request.content, 'html.parser')
+    # Find the html tag containing the price which is exclusive to each storefront
+    raw_price = _get_price(soup, this_supplier)
+    string_price = str(raw_price)
+    cleaned_price = _remove_tags(string_price)
+    return cleaned_price
+
+def _get_price(this_soup, this_supplier):
+    if this_supplier == "m-g":
+        return this_soup.find('bdi')
+    if this_supplier == "vaultgames":
+        return this_soup.find('span', id = 'ProductPrice')
+    if this_supplier == "theboardgamer":
+        return this_soup.find('span', class_ = 'current-price theme-money')
+    if this_supplier == "gamesempire":
+        return this_soup.find('span', class_ = 'money')
+    if this_supplier == "goodgames":
+        return this_soup.find_all('span', class_ = 'money')
+    if this_supplier == "gameology":
+        return this_soup.find('span', class_ = 'price single--price')
+    if this_supplier == "deckedoutgaming":
+        return this_soup.find('div', class_ = 'productprice productpricetext')
+    if this_supplier == "plentyofgames":
+        return this_soup.find('span', itemprop = 'price')
+    else:
+        return
+
+def _remove_tags(text):
     # Remove HTML tags
     clean = re.compile('<.*?>')
     # return re.sub(clean, '', text)
@@ -26,71 +72,13 @@ def remove_tags(text):
     # Remove empty space
     return cleaned_text.strip()
 
-# Murders ar Karlov Play Booster Box
+# Murders at Karlov Play Booster Box
 if __name__ == "__main__":
-    # Mind Games Online
-    mgo = requests.get('https://www.m-g.com.au/product/mtg-murders-at-karlov-manor-play-booster-box/', headers=headers)
-    soup = BeautifulSoup(mgo.content, 'html.parser')
-    raw_price = soup.find('bdi')
-    string_price = str(raw_price)
-    actual_price = remove_tags(string_price)
-    print('Mind Games Online: ', actual_price)
+    for product_url in karlov_booster_box:
+        supplier_name = _get_supplier(product_url)
+        supplier_price = _scrape_site(product_url, supplier_name)
+        print(supplier_name, ":", supplier_price)
 
-    # Vault Games
-    vg = requests.get('https://vaultgames.com.au/products/murders-at-karlov-manor-play-booster-box?_pos=3&_sid=19ac284bf&_ss=r', headers=headers)
-    soup = BeautifulSoup(vg.content, 'html.parser')
-    raw_price = soup.find('span', id = 'ProductPrice')
-    string_price = str(raw_price)
-    actual_price = remove_tags(string_price)
-    print('Vault Games: ', actual_price)
-
-    # The Board Gamer
-    bg = requests.get('https://theboardgamer.com.au/products/magic-the-gathering-murders-at-karlov-manor-play-booster-box-38428933', headers=headers)
-    soup = BeautifulSoup(bg.content, 'html.parser')
-    raw_price = soup.find('span', class_ = 'current-price theme-money')
-    string_price = str(raw_price)
-    actual_price = remove_tags(string_price)
-    print('The Board Gamer: ', actual_price)
-
-    # Games Empire
-    ge = requests.get('https://gamesempire.com.au/products/magic-murders-at-karlov-manor-play-booster-box?_pos=9&_sid=1d0248fdd&_ss=r')
-    soup = BeautifulSoup(ge.content, 'html.parser')
-    raw_price = soup.find('span', class_ = 'money')
-    string_price = str(raw_price)
-    actual_price = remove_tags(string_price)
-    print('Games Empire: ', actual_price)
-
-    # Good Games Shop
-    gg = requests.get('https://shop.goodgames.com.au/products/magic-the-gathering-murders-at-karlov-manor-play-booster-box-preorder?variant=43011077734558')
-    soup = BeautifulSoup(gg.content, 'html.parser')
-    raw_price = soup.find_all('span', class_ = 'money')
-    string_price = str(raw_price)
-    actual_price = remove_tags(string_price)
-    print('Good Games Shop: ', actual_price)
-
-    # Gameology
-    gameology = requests.get('https://www.gameology.com.au/products/magic-murders-at-karlov-manor-play-booster-box')
-    soup = BeautifulSoup(gameology.content, 'html.parser')
-    raw_price = soup.find('span', class_ = 'price single--price')
-    string_price = str(raw_price)
-    actual_price = remove_tags(string_price)
-    print('Gameology: ', actual_price)
-
-    # Decked out gaming
-    do = requests.get('https://www.deckedoutgaming.com/murders-at-karlov-manor-play-booster-box')
-    soup = BeautifulSoup(do.content, 'html.parser')
-    raw_price = soup.find('div', class_ = 'productprice productpricetext')
-    string_price = str(raw_price)
-    actual_price = remove_tags(string_price)
-    print('Decked Out Gaming: ', actual_price)
-
-    # Plenty of games
-    pog = requests.get('https://www.plentyofgames.com.au/collections/mtg-sealed/products/murders-at-karlov-manor-play-booster-display')
-    soup = BeautifulSoup(pog.content, 'html.parser')
-    raw_price = soup.find('span', itemprop = 'price')
-    string_price = str(raw_price)
-    actual_price = remove_tags(string_price)
-    print('Plenty of games: ', actual_price)
 
     # https://www.ebgames.com.au/search?q=murders+at+karlov
     # https://www.plentyofgames.com.au/collections/mtg-sealed?page=2
@@ -101,3 +89,4 @@ if __name__ == "__main__":
 
     # TODO:
     # Method that checks for sold out
+    # Strip $ from retrieved price
