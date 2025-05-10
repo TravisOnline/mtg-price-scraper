@@ -23,7 +23,7 @@ karlov_booster_box = ['https://www.m-g.com.au/product/mtg-murders-at-karlov-mano
 
 www_substring = "www."
 shop_substring = "shop."
-# test commit
+
 def _get_supplier(supplier_url):
     this_supplier_string = supplier_url.split('.com')[0]
     this_supplier_string = this_supplier_string.split('https://')[1]
