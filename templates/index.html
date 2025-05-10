@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><title>MTG Prices</title></head>
+<body>
+    <h1>We the BEST music</h1>
+    <table>
+        {% for row in _mtg_prices %}
+        <tr>
+            <td>{{ row["product_type"] }}</td>
+            <td>{{ row["supplier"] }}</td>
+            <td>{{ row["price"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

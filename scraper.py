@@ -3,8 +3,8 @@ from os import remove
 import requests
 import re
 import random
-import pickle
 from bs4 import BeautifulSoup
+import sqlite3
 
 user_agents = [
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
@@ -68,16 +68,27 @@ def _remove_tags(text):
     # return re.sub(clean, '', text)
     cleaned_text = re.sub(clean, '', text)
     # Remove square brackets and commas if we call find_all()
-    cleaned_text = re.sub(r'[\[\],]', '',  cleaned_text)
+    cleaned_text = re.sub(r'[\[\],$]', '',  cleaned_text)
     # Remove empty space
     return cleaned_text.strip()
 
 # Murders at Karlov Play Booster Box
 if __name__ == "__main__":
+    # Establish db connection, create table if not there
+    connect = sqlite3.connect('mtg-database.db')
+    connect.execute('CREATE TABLE IF NOT EXISTS CARDPRICES (product_type TEXT, supplier TEXT, price TEXT)')
+
     for product_url in karlov_booster_box:
+        product_name = 'murders-at-karlov-manor-play-booster-box'
         supplier_name = _get_supplier(product_url)
         supplier_price = _scrape_site(product_url, supplier_name)
-        print(supplier_name, ":", supplier_price)
+        # print(supplier_name, ":", supplier_price)
+        with sqlite3.connect('mtg-database.db') as prices:
+            cursor = prices.cursor()
+            cursor.execute('INSERT INTO CARDPRICES \
+                           (product_type,supplier,price) VALUES (?,?,?)',
+                           (product_name, supplier_name, supplier_price))
+            prices.commit()
 
 
     # https://www.ebgames.com.au/search?q=murders+at+karlov
