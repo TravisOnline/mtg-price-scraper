@@ -76,18 +76,21 @@ def _remove_tags(text):
 if __name__ == "__main__":
     # Establish db connection, create table if not there
     connect = sqlite3.connect('mtg-database.db')
-    connect.execute('CREATE TABLE IF NOT EXISTS CARDPRICES (product_type TEXT, supplier TEXT, price TEXT)')
+    connect.execute('CREATE TABLE IF NOT EXISTS CARDPRICES (product_type TEXT, supplier TEXT, price REAL, UNIQUE(product_type, supplier))')
 
     for product_url in karlov_booster_box:
         product_name = 'murders-at-karlov-manor-play-booster-box'
         supplier_name = _get_supplier(product_url)
         supplier_price = _scrape_site(product_url, supplier_name)
-        # print(supplier_name, ":", supplier_price)
+
         with sqlite3.connect('mtg-database.db') as prices:
             cursor = prices.cursor()
-            cursor.execute('INSERT INTO CARDPRICES \
-                           (product_type,supplier,price) VALUES (?,?,?)',
-                           (product_name, supplier_name, supplier_price))
+            cursor.execute('''
+                           INSERT INTO CARDPRICES (product_type, supplier, price)
+                           VALUES (?, ?, ?) ON CONFLICT(product_type, supplier)
+                        DO
+                           UPDATE SET price=excluded.price
+                           ''', (product_name, supplier_name, supplier_price))
             prices.commit()
 
 
