@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head><title>MTG Prices</title></head>
+<head>
+    <title>MTG Prices</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='mystyle.css') }}">
+</head>
+
 <body>
-    <h1>We the BEST music</h1>
-    <table>
-        {% for row in _mtg_prices %}
-        <tr>
-            <td>{{ row["product_type"] }}</td>
-            <td>{{ row["supplier"] }}</td>
-            <td>{{ row["price"] }}</td>
-        </tr>
+    <h1>Product Price List</h1>
+    <div class="product-grid">
+        {% for product in products %}
+        {% set image_path = product.image_path %}
+        {% set prices = product.prices %}
+        {% set product_type = product.product_type %}
+        {% include '_product_display.html' %}
         {% endfor %}
-    </table>
+    </div>
 </body>
 </html>
