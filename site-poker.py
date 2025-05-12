@@ -15,12 +15,12 @@ headers = {
 }
 
 if __name__ == "__main__":
-    store_url = 'https://gamesempire.com.au/collections/magic-the-gathering/products/magic-the-gathering-final-fantasy-commander-deck-revival-trance'
+    store_url = 'https://rhysticnostalgiagaming.com.au/products/rat-colony-secret-lair-drop-series?_pos=6&_sid=0fa443ca0&_ss=r'
     this_request = requests.get(store_url, headers=headers)
     soup = BeautifulSoup(this_request.content, 'html.parser')
     # print(soup)
     # Find the html tag containing the price which is exclusive to each storefront
-    raw_price = soup.find_all('span', class_ = 'money')
+    raw_price = soup.find('span', class_ = 'price')
     # print("Raw price: ",raw_price)
     if raw_price:
         string_price = str(raw_price)

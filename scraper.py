@@ -15,14 +15,6 @@ headers = {
     'Accept-Encoding': 'gzip, deflate', 'Accept-Language': 'en-US,en;q=0.5', 'Connection': 'close'
 }
 
-karlov_booster_box = ['https://www.m-g.com.au/product/mtg-murders-at-karlov-manor-play-booster-box/', 'https://vaultgames.com.au/products/murders-at-karlov-manor-play-booster-box?_pos=3&_sid=19ac284bf&_ss=r','https://theboardgamer.com.au/products/magic-the-gathering-murders-at-karlov-manor-play-booster-box-38428933',
-                      'https://gamesempire.com.au/products/magic-murders-at-karlov-manor-play-booster-box?_pos=9&_sid=1d0248fdd&_ss=r', 'https://shop.goodgames.com.au/products/magic-the-gathering-murders-at-karlov-manor-play-booster-box-preorder?variant=43011077734558', 'https://www.gameology.com.au/products/magic-murders-at-karlov-manor-play-booster-box',
-                      'https://www.deckedoutgaming.com/murders-at-karlov-manor-play-booster-box', 'https://www.plentyofgames.com.au/collections/mtg-sealed/products/murders-at-karlov-manor-play-booster-display']
-
-karlov_booster_pack = ['https://www.m-g.com.au/product/mtg-murders-at-karlov-manor-play-booster-single/', 'https://gamesempire.com.au/products/magic-murders-at-karlov-manor-play-booster?_pos=2&_sid=4a7de7c9d&_ss=r',
-                       'https://shop.goodgames.com.au/products/magic-the-gathering-murders-at-karlov-manor-play-booster?variant=43011027435678', 'https://www.gameology.com.au/products/magic-murders-at-karlov-manor-single-play-booster',
-                       'https://www.deckedoutgaming.com/murders-at-karlov-manor-play-booster', 'https://www.cherrycollectables.com.au/products/magic-the-gathering-murders-at-karlov-manor-play-booster-pack']
-
 revival_trance_commander = ['https://gamesempire.com.au/collections/magic-the-gathering/products/magic-the-gathering-final-fantasy-commander-deck-revival-trance',
                             'https://www.pokebox.com.au/products/magic-the-gathering-final-fantasy-revival-trance-red-white-black-commander-deck', 'https://www.deckedoutgaming.com/magic-final-fantasy-commander-deck-revival-trance',
                             'https://www.irresistibleforce.com.au/products/magic-final-fantasy-commander-deck-revival-trance', 'https://www.hobbykitz.com.au/products/pre-order-final-fantasy-commander-deck-revival-trance',
@@ -41,11 +33,44 @@ final_fantasy_booster_pack = ['https://www.cherrycollectables.com.au/products/ma
                               'https://shop.goodgames.com.au/products/magic-the-gathering-final-fantasy-play-booster?variant=51845425791340','https://www.m-g.com.au/product/mtg-final-fantasy-play-booster-single/',
                               'https://www.pokebox.com.au/products/magic-the-gathering-final-fantasy-play-booster-pack','https://popculturelarrikin.com/products/magic-final-fantasy-play-booster?_pos=3&_sid=fa1a8f1ad&_ss=r']
 
+duskmourn_nightmare_bundle = ['https://www.m-g.com.au/product/mtg-duskmourn-house-of-horror-nightmare-bundle/','https://www.cherrycollectables.com.au/products/magic-the-gathering-duskmourn-gift-bundle-box',
+                              'https://www.deckedoutgaming.com/duskmourn-house-of-horror-nightmare-bundle','https://www.gameology.com.au/products/magic-duskmourn-house-of-horror-nightmare-bundle',
+                              'https://gamesempire.com.au/products/magic-the-gathering-duskmourn-house-of-horror-nightmare-bundle?_pos=5&_sid=f32173b3f&_ss=r','https://pastimeparadise.com.au/shop/trading-cards/duskmourn-house-of-horror-nightmare-bundle/',
+                              'https://plentyofgames.com.au/products/duskmourn-house-of-horror-nightmare-bundle?_pos=1&_psq=duskmourn+nightmare+bun&_ss=e&_v=1.0','https://popculturelarrikin.com/products/magic-duskmourn-house-of-horror-nightmare-bundle?_pos=1&_psq=duskmourn+nightmare&_ss=e&_v=1.0',
+                              'https://roningames.com.au/collections/trading-card-sealed-product/products/duskmourn-house-of-horror-nightmare-bundle?_pos=1&_sid=00e3239a5&_ss=r', 'https://thecombatcompany.com/products/duskmourn-house-of-horror-bundle-pre-order-sep-1?variant=49350630801702&country=AU&currency=AUD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic',
+                              'https://millenniumcomics.com.au/products/magic-the-gathering-duskmourn-nightmare-bundle','https://guf.com.au/collections/duskmourn/products/magic-the-gathering-duskmourn-house-of-horror-nightmare-bundle']
+
+rat_colony_dominaria_list = ['https://awgames.com.au/products/rat-colony-dominaria?_pos=3&_sid=ad750b25a&_ss=r','https://mayhemcollectables.com.au/products/rat-colony-dominaria?_pos=1&_sid=54b489963&_ss=r',
+                             'https://plentyofgames.com.au/products/rat-colony-dominaria?_pos=1&_psq=rat+colony&_ss=e&_v=1.0','https://roningames.com.au/products/rat-colony-dominaria?_pos=1&_sid=b8c2d9866&_ss=r',
+                             'https://www.mtgmate.com.au/cards/Rat_Colony/DOM/101','https://gamesportal.com.au/products/mtg-rat-colonydominaria?_pos=1&_psq=rat+colony&_ss=e&_v=1.0',
+                             'https://www.thegamescube.com/catalog/magic_singles-pioneer-dominaria/rat_colony/533713','https://elementalarcade.com.au/products/rat-colony-dominaria?_pos=1&_sid=e0558c90e&_ss=r',
+                             'https://progamers.com.au/products/mtg-rat-colonydominaria?_pos=6&_sid=d951440dd&_ss=r','https://eternalmagic.cc/products/rat-colony-dominaria?_pos=2&_sid=af4a7753e&_ss=r',
+                             'https://magiccards.com.au/content/buy/rat-colony-0','https://thatgamestore.com.au/products/rat-colony-dominaria?_pos=2&_sid=98ba6b4e0&_ss=r','https://tcgsingles.com.au/products/mtg-rat-colonydominaria?_pos=1&_sid=610b40130&_ss=r'
+                             'https://guf.com.au/products/rat-colony-dominaria?_pos=1&_sid=7ecc4be9e&_ss=r','https://jenesmtg.com.au/products/rat-colony-dominaria-101?_pos=1&_sid=91033804c&_ss=r','https://www.cracking-tcgsingles.com.au/products/rat-colony-dominaria?_pos=2&_sid=6c194c282&_ss=r&variant=40082999247000',
+                             'https://www.cardhouse.com.au/products/rat-colony-dominaria','https://fromthedeepgames.com.au/products/mtg-rat-colonydominaria?_pos=3&_sid=bc9837178&_ss=r',
+                             'https://rhysticnostalgiagaming.com.au/products/rat-colony-dominaria?_pos=3&_sid=0fa443ca0&_ss=r']
+
+rat_colony_secret_lair_list_01 = ['https://mayhemcollectables.com.au/products/rat-colony-secret-lair-drop-series?_pos=5&_sid=54b489963&_ss=r','https://plentyofgames.com.au/products/rat-colony-secret-lair-drop-series?_pos=4&_psq=rat+colony&_ss=e&_v=1.0',
+                                  'https://roningames.com.au/products/rat-colony-secret-lair-drop?_pos=3&_sid=b8c2d9866&_ss=r','https://gamesportal.com.au/products/mtg-rat-colonysecret-lair-drop-series?_pos=3&_psq=rat+colony&_ss=e&_v=1.0',
+                                  'https://www.thegamescube.com/catalog/magic_singles-premium_products_ftv_etc-secret_lair/rat_colony__foil/614045', 'https://elementalarcade.com.au/products/rat-colony-secret-lair-drop-series?_pos=6&_sid=e0558c90e&_ss=r',
+                                  'https://progamers.com.au/products/mtg-rat-colony-secret-lair-drop-series?_pos=8&_sid=d951440dd&_ss=r','https://eternalmagic.cc/products/rat-colony-secret-lair-drop-series?_pos=4&_sid=af4a7753e&_ss=r',
+                                  'https://thatgamestore.com.au/products/rat-colony-secret-lair-drop?_pos=5&_sid=98ba6b4e0&_ss=r','https://guf.com.au/products/mtg-rat-colony-secret-lair-drop-series?_pos=7&_sid=7ecc4be9e&_ss=r',
+                                  'https://tcgsingles.com.au/products/mtg-rat-colonysecret-lair-drop-series?_pos=4&_sid=610b40130&_ss=r','https://www.cracking-tcgsingles.com.au/products/rat-colony-secret-lair-drop?_pos=4&_sid=6c194c282&_ss=r&variant=40094044356760',
+                                  'https://www.cardhouse.com.au/products/rat-colony-secret-lair-drop-series','https://rhysticnostalgiagaming.com.au/products/rat-colony-secret-lair-drop-series?_pos=6&_sid=0fa443ca0&_ss=r']
+
 www_substring = "www."
 shop_substring = "shop."
+com_substring = ".com"
+cc_substring = ".cc"
 
 def _get_supplier(supplier_url):
-    this_supplier_string = supplier_url.split('.com')[0]
+    this_supplier_string = ''
+    if com_substring in supplier_url:
+        this_supplier_string = supplier_url.split('.com')[0]
+    if cc_substring in supplier_url:
+        this_supplier_string = supplier_url.split('.cc')[0]
+    # if au_substring in supplier_url:
+    #     this_supplier_string = supplier_url.split('.au')[0]
     this_supplier_string = this_supplier_string.split('https://')[1]
     if www_substring in this_supplier_string:
         this_supplier_string = this_supplier_string.split('www.')[1]
@@ -77,20 +102,32 @@ def _get_price(this_soup, this_supplier):
         return this_soup.find('span', class_ = 'price single--price')
     if this_supplier == "deckedoutgaming":
         return this_soup.find('div', class_ = 'productprice productpricetext')
-    if this_supplier == "plentyofgames" or this_supplier == "awgames" or this_supplier == 'roningames':
+    if this_supplier == "plentyofgames" or this_supplier == "awgames" or this_supplier == "roningames" or this_supplier == "gamesportal" \
+            or this_supplier == "elementalarcade" or this_supplier == "progamers" or this_supplier == "eternalmagic" or this_supplier == "thatgamestore" \
+            or this_supplier == "tcgsingles" or this_supplier == "cardhouse" or this_supplier == "guf" or this_supplier == "fromthedeepgames":
         return this_soup.find('span', itemprop = 'price')
     if this_supplier == "cherrycollectables":
         return this_soup.find('span', class_ = 'money')
-    if this_supplier == "pokebox" or this_supplier == "mayhemcollectables":
+    if this_supplier == "pokebox" or this_supplier == "mayhemcollectables" or this_supplier == "rhysticnostalgiagaming":
         return this_soup.find('span', class_ = 'price')
     if this_supplier == "irresistibleforce":
         return this_soup.find('span', class_ = 'price-item price-item-regular')
-    if this_supplier == "hobbykitz":
+    if this_supplier == "hobbykitz" or this_supplier == 'thecombatcompany' or this_supplier == 'jenesmtg':
         return this_soup.find('span', class_ = 'price-item price-item--regular')
     if this_supplier == "tabletopwarfare":
         return this_soup.find('span', class_ = 'product-price--original')
     if this_supplier == "popculturelarrikin":
-        return this_soup.find('b', class_ = 'price-item price-item--regular')
+        return this_soup.find('b', class_ = 'price-item price-item--regular') # can merge this into above matching clause
+    if this_supplier == "millenniumcomics":
+        return this_soup.find_all('span', class_ = 'price price--highlight')
+    if this_supplier == "mtgmate":
+        return this_soup.find_all('td', class_ = 'price')
+    if this_supplier == "thegamescube":
+        return this_soup.find('span', class_ = 'regular price')
+    if this_supplier == "magiccards":
+        return this_soup.find('span', class_ = 'price-amount')
+    if this_supplier == "cracking-tcgsingles":
+        return this_soup.find('span', class_ = 'transcy-money')
     else:
         print("Supplier not found! Tried the supplier: ", this_supplier)
 
@@ -134,18 +171,6 @@ if __name__ == "__main__":
     connect.execute('CREATE TABLE IF NOT EXISTS CARDPRICES (product_type TEXT, supplier TEXT, supplier_url TEXT, price REAL, lowest_price REAL, UNIQUE(product_type, supplier))')
     connect.close()
 
-    for product_url in karlov_booster_box:
-        product_name = 'murders-at-karlov-manor-play-booster-box'
-        supplier_name = _get_supplier(product_url)
-        supplier_price = _scrape_site(product_url, supplier_name)
-        _write_to_db(product_name, supplier_name, product_url, supplier_price)
-
-    for product_url in karlov_booster_pack:
-        product_name = 'murders-at-karlov-single-booster'
-        supplier_name = _get_supplier(product_url)
-        supplier_price = _scrape_site(product_url, supplier_name)
-        _write_to_db(product_name, supplier_name, product_url, supplier_price)
-
     for product_url in revival_trance_commander:
         product_name = 'commander-deck-revival-trance'
         supplier_name = _get_supplier(product_url)
@@ -160,6 +185,24 @@ if __name__ == "__main__":
 
     for product_url in final_fantasy_booster_pack:
         product_name = 'final-fantasy-play-booster'
+        supplier_name = _get_supplier(product_url)
+        supplier_price = _scrape_site(product_url, supplier_name)
+        _write_to_db(product_name, supplier_name, product_url, supplier_price)
+
+    for product_url in duskmourn_nightmare_bundle:
+        product_name = 'duskmourn-house-of-horror-nightmare-bundle'
+        supplier_name = _get_supplier(product_url)
+        supplier_price = _scrape_site(product_url, supplier_name)
+        _write_to_db(product_name, supplier_name, product_url, supplier_price)
+
+    for product_url in rat_colony_dominaria_list:
+        product_name = 'rat-colony-dominaria'
+        supplier_name = _get_supplier(product_url)
+        supplier_price = _scrape_site(product_url, supplier_name)
+        _write_to_db(product_name, supplier_name, product_url, supplier_price)
+
+    for product_url in rat_colony_secret_lair_list_01:
+        product_name = 'rat-colony-secret-lair-drop'
         supplier_name = _get_supplier(product_url)
         supplier_price = _scrape_site(product_url, supplier_name)
         _write_to_db(product_name, supplier_name, product_url, supplier_price)

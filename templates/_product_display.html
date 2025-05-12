@@ -1,27 +1,40 @@
 <div class="product-card">
-    <img src="{{ url_for('static', filename=image_path) }}" alt="{{ product_type }}">
+    <div class="product-left">
+        <img class="product-image" src="{{ url_for('static', filename=image_path) }}" alt="{{ product_type }}">
+    </div>
     <div class="product-details">
-        <h3>{{ product_type.replace('-', ' ').title() }}</h3>
-        <table>
-            {% for row in prices %}
-            <tr>
-                <td>{{ row["supplier"] }}</td>
-                <td>
-                    {% if row["price"] and row["price"] not in ["None", "NONE"] %}
-                        ${{ "%.2f"|format(row["price"]|float) }}
-                    {% else %}
-                        None
-                    {% endif %}
-                </td>
-                <td>
-                    {% if row["lowest_price"] not in ["None", "NONE", None] %}
-                        ${{ "%.2f"|format(row["lowest_price"]|float) }}
-                    {% else %}
-                        None
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
+        <h3 class="product-title">{{ product_type.replace('-', ' ').title() }}</h3>
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>Supplier</th>
+                    <th>Price</th>
+                    <th>Lowest Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in prices %}
+                <tr>
+                    <td><a href="{{ row['supplier_url'] }}" target="_blank">{{ row['supplier'] }}</a></td>
+                    <td>
+                        {% if row["price"] and row["price"] not in ["None", "NONE"] %}
+                            <span class="{% if row['price'] == row['lowest_price'] %}price-green{% else %}price-red{% endif %}">
+                                ${{ "%.2f"|format(row["price"]|float) }}
+                            </span>
+                        {% else %}
+                            None
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if row["lowest_price"] not in ["None", "NONE", None] %}
+                            ${{ "%.2f"|format(row["lowest_price"]|float) }}
+                        {% else %}
+                            None
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
     </div>
 </div>

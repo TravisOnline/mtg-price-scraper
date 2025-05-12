@@ -5,7 +5,7 @@ body{
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* exactly 3 per row */
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     padding: 1rem;
 }
@@ -13,7 +13,6 @@ body{
 .product-card {
     display: flex;
     flex-direction: row;
-    background-color: #f9f9f9;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -21,29 +20,72 @@ body{
     width: 100%;
     box-sizing: border-box;
     align-items: flex-start;
+    border-style: outset;
+    background: #5f3fb0;
+    background: linear-gradient(180deg,rgba(95, 63, 176, 1) 0%, rgba(32, 17, 71, 0.5) 79%);
 }
 
 .product-card img {
+    /*width: 100%;*/
+    /*height: 100%;*/
     width: 350px;
     height: 350px;
-    object-fit: cover;
-    flex-shrink: 0;
-    margin-right: 1rem;
+    object-fit: contain;
+    border-style: solid;
+    border-radius: 8px;
+    background: white;
 }
 
 .product-details {
     flex: 1;
     min-width: 0;
+    text-align: center;
     overflow-wrap: break-word;
+    border: solid black;
+    border-radius: 8px;
+    z-index: 2;
+    top: 50%;
+    background: #3b2f57;
 }
 
-.product-info table {
+.product-title {
+    color: #bbb6df;
+    background: #3b2f57;
+}
+
+.product-table thead th {
+    text-align: center;
+    padding: 0.5rem;
+    font-weight: bold;
+    background: #3b2f57;
+    border-bottom: solid black;
+    color: #bbb6df;
+}
+
+.product-table {
     width: 100%;
-    font-size: 14px;
     border-collapse: collapse;
+    background: #e5dada;
 }
 
-.product-info td {
-    padding: 4px 6px;
-    border-bottom: 1px solid #eee;
+.product-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    margin-right: 12px;
+    background: white;
+}
+
+.price-green {
+    color: #6fcf97;
+    font-weight: bold;
+}
+
+.price-red {
+    color: #eb5757;
+    font-weight: bold;
 }
